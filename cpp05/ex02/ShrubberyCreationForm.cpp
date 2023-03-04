@@ -6,7 +6,7 @@
 /*   By: cudoh <cudoh@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:26:58 by cudoh             #+#    #+#             */
-/*   Updated: 2023/03/01 04:14:39 by cudoh            ###   ########.fr       */
+/*   Updated: 2023/03/04 17:35:13 by cudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,9 @@ void ShrubberyCreationForm::execute(Bureaucrat const &b) const
                     << "         |      |     \n"
                     << "        /|\\     |     \n";
         xFileStream.close();
+        COUT << AFORM_COL_BLUE "Create a file " << _target
+         << "_shrubbery in the working directory and, writes ASCII trees inside it"
+         << AFORM_COL_DEFAULT << ENDL;
         COUT << AFORM_COL_BLUE << b.getName() << " executed " << _name
         << AFORM_COL_DEFAULT << ENDL;
     }
