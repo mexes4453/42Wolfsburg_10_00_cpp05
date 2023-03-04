@@ -11,6 +11,10 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#define BUREAUCRAT_EXCEPTION_MSG(OBJ_FORM,OBJ_EXCEPT) CERR << this->_name \
+             << " couldn't signed " \
+             << f.getName() << " because " \
+             << e.what() << ENDL; \
 
 int const Bureaucrat::_max_grade = 1;
 int const Bureaucrat::_min_grade = 150;
@@ -157,8 +161,43 @@ int   Bureaucrat::getMinGrade(void)
 
 
 
+void Bureaucrat::signForm(AForm &f)
+{
+    try
+    {
+        f.beSigned(*this);
+        if (f.getSignState() == true)
+        {
+            COUT << this->_name << " signed " << f.getName() << ENDL;
+        }
+    }
+    catch( AForm::GradeTooLowException& e)
+    {
+        BUREAUCRAT_EXCEPTION_MSG(f,e);
+    }
+    catch ( AForm::GradeTooHighException &e)
+    {
+        BUREAUCRAT_EXCEPTION_MSG(f,e);
+    }
+    catch ( std::exception &e)
+    {
+        BUREAUCRAT_EXCEPTION_MSG(f,e);
+    }
+}
 
-
+void Bureaucrat::executeForm(AForm const &f)
+{
+    if (f.getSignState())
+    {
+        f.execute(*this);
+    }
+    else
+    {
+        CERR << AFORM_COL_BLUE "Error! " << _name 
+             << " could not execute " << f.getName()
+             << " because form is unsigned\n" AFORM_COL_DEFAULT;
+    }
+}
 
 std::ostream    &operator<<(std::ostream &o, Bureaucrat const &b)
 {

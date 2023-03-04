@@ -6,7 +6,7 @@
 /*   By: cudoh <cudoh@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:26:26 by cudoh             #+#    #+#             */
-/*   Updated: 2023/02/25 19:07:16 by cudoh            ###   ########.fr       */
+/*   Updated: 2023/02/26 11:21:53 by cudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ class Bureaucrat
         int                 getGrade(void) const;
         void                incrementGrade(void);
         void                decrementGrade(void);
-        static int     getMaxGrade(void);
-        static int     getMinGrade(void);
+        static int          getMaxGrade(void);
+        static int          getMinGrade(void);
         void                signForm(Form &f);
         
         /*------------ EXCEPTION ----------------------*/

@@ -6,7 +6,7 @@
 /*   By: cudoh <cudoh@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:26:26 by cudoh             #+#    #+#             */
-/*   Updated: 2023/02/17 00:18:58 by cudoh            ###   ########.fr       */
+/*   Updated: 2023/02/26 11:25:48 by cudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 # define BUREAUCRAT_HPP
 # include <iostream>
 # include <exception>
-# define COUT std::cout
-# define ENDL std::endl
 
+
+# define COUT std::cout
+# define CERR std::cerr
+# define ENDL std::endl
 
 
 class Bureaucrat
@@ -25,8 +27,8 @@ class Bureaucrat
     private:
         std::string const _name;
         int _grade;
-        static int const _max_grade = 1;
-        static int const _min_grade = 150;
+        static int const _max_grade;
+        static int const _min_grade;
 
 
     public:
@@ -39,6 +41,8 @@ class Bureaucrat
         int                 getGrade(void) const;
         void                incrementGrade(void);
         void                decrementGrade(void);
+        static int          getMaxGrade(void);
+        static int          getMinGrade(void);
         
         /*------------ EXCEPTION ----------------------*/
         class GradeTooHighException : public std::exception

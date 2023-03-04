@@ -66,11 +66,6 @@ int main(void)
 
     COUT << ENDL;
     Bureaucrat s("smith", 20);
-    INFO(BEFORE_INCREMENT,s);
-    s.incrementGrade();
-    INFO(AFTER_INCREMENT,s);
-
-    COUT << ENDL;
     INFO(SIGN_FORM,s);
     Form f3;
     s.signForm(f3);

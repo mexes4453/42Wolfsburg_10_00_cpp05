@@ -1,50 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                     :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cudoh <cudoh@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:26:26 by cudoh             #+#    #+#             */
-/*   Updated: 2023/02/17 00:18:58 by cudoh            ###   ########.fr       */
+/*   Updated: 2023/03/04 01:23:06 by cudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
 # include <iostream>
 # include <exception>
 # include "Bureaucrat.hpp"
+# include <fstream>
+# include <sstream>
+# include "AForm.hpp"
 
-# define COUT std::cout
-# define ENDL std::endl
+# define ROBOTOMY_GRADE_SIGN (72)
+# define ROBOTOMY_GRADE_EXEC (45)
+# define ROBOTOMY_MSG1 "Make some drilling sound."
+# define ROBOTOMY_MSG2 " has been robotomized successfully 50% of the time"
 
 class Bureaucrat;
 
-class Form
+class RobotomyRequestForm : public AForm
 {
     private:
-        std::string const   _name;
-        bool                _state_sign;
-        int const           _grade_sign;
-        int const           _grade_exec;
-        static int const    _min_grade;
-        static int const    _max_grade;
+        std::string const _target;
 
 
     public:
-        Form(void);
-        Form(std::string const name, int const signGrade, int const signExec);
-        Form(Form const &other);
-        Form  &operator=(Form const &other);
-        ~Form(void);
-        std::string const   getName(void) const;
-        bool                getSignState(void) const;
-        int                 getSignGrade(void) const;
-        int                 getExecGrade(void) const;
-        void                beSigned(Bureaucrat &b);
+        RobotomyRequestForm(void);
+        RobotomyRequestForm(std::string const target);
+        RobotomyRequestForm(RobotomyRequestForm const &other);
+        RobotomyRequestForm  &operator=(RobotomyRequestForm const &other);
+        ~RobotomyRequestForm(void);
         
+        void execute(Bureaucrat const &b) const;
         /*------------ EXCEPTION ----------------------*/
         class GradeTooHighException : public std::exception
         {
@@ -66,6 +62,6 @@ class Form
         };
 };
 
-std::ostream    &operator<<(std::ostream &o, Form const &f);
+std::ostream    &operator<<(std::ostream &o, RobotomyRequestForm const &f);
 
 #endif

@@ -1,93 +1,93 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AAForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cudoh <cudoh@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:26:58 by cudoh             #+#    #+#             */
-/*   Updated: 2023/03/04 02:17:16 by cudoh            ###   ########.fr       */
+/*   Updated: 2023/02/26 12:33:09 by cudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
 /* Initialise the static member variables */
-int const Form::_min_grade = Bureaucrat::getMinGrade();
-int const Form::_max_grade = Bureaucrat::getMaxGrade();
+int const AForm::_min_grade = Bureaucrat::getMinGrade();
+int const AForm::_max_grade = Bureaucrat::getMaxGrade();
 
 
-Form::Form(void) 
-: _name("Form"), _state_sign(false), _grade_sign(20), _grade_exec(5)
+AForm::AForm(void) 
+: _name("AForm"), _state_sign(false), _grade_sign(20), _grade_exec(5)
 {
-    COUT << "call default constructor Form: " << _name << ENDL;
+    COUT << "call default constructor AForm: " << _name << ENDL;
     return ;
 }
 
 
-Form::Form(std::string const name, int const signGrade, int const execGrade)
+AForm::AForm(std::string const name, int const signGrade, int const execGrade)
 : _name(name), _state_sign(false), _grade_sign(signGrade), _grade_exec(execGrade)
 {
-    COUT << "call parametric constructor Form: " << _name << ENDL;
+    COUT << "call parametric constructor AForm: " << _name << ENDL;
 }
 
 
 
-Form::Form(Form const &other)
+AForm::AForm(AForm const &other)
 : _name(other._name), _state_sign(other._state_sign), _grade_sign(other._grade_sign),
  _grade_exec(other._grade_exec)
 {
     *this = other;
-    COUT << "call copy constructor Form: " << _name << ENDL;
+    COUT << "call copy constructor AForm: " << _name << ENDL;
 }
 
 
 
-Form  &Form::operator=(Form const &other)
+AForm  &AForm::operator=(AForm const &other)
 {
     this->_state_sign = other._state_sign;
-    COUT << "call copy assignment constructor Form: " << _name << ENDL;
+    COUT << "call copy assignment constructor AForm: " << _name << ENDL;
     return (*this) ;
 }
 
 
 
-Form::~Form(void)
+AForm::~AForm(void)
 {
-    COUT << "call destructor Form: " << _name << ENDL;
+    COUT << "call destructor AForm: " << _name << ENDL;
     return ;
 }
 
 
 
-std::string const   Form::getName(void) const
+std::string const   AForm::getName(void) const
 {
     return (_name);
 }
 
 
 
-bool   Form::getSignState(void) const
+bool   AForm::getSignState(void) const
 {
     return (_state_sign);
 }
 
 
 
-int   Form::getSignGrade(void) const
+int   AForm::getSignGrade(void) const
 {
     return (_grade_sign);
 }
 
 
-int  Form::getExecGrade(void) const
+int  AForm::getExecGrade(void) const
 {
     return (_grade_exec);
 }
 
 
 
-void    Form::beSigned(Bureaucrat &b)
+void    AForm::beSigned(Bureaucrat &b)
 {
         if (b.getGrade() < _grade_sign)
         {
@@ -105,8 +105,23 @@ void    Form::beSigned(Bureaucrat &b)
 
 
 
+bool AForm::checkFormExecGrade(Bureaucrat const &b) const
+{
+    bool boReturn = false;
 
-std::ostream    &operator<<(std::ostream &o, Form const &f)
+    if (b.getGrade() < _grade_exec )
+    {
+        throw GradeTooHighException();
+    }
+    else if (b.getGrade() > _grade_exec)
+    {
+        throw GradeTooLowException();
+    }
+    boReturn = true;
+    return (boReturn);
+}
+
+std::ostream    &operator<<(std::ostream &o, AForm const &f)
 {
     o << "FORM NAME:  " << f.getName() << ENDL
       << "SIGN GRADE: " << f.getSignGrade() << ENDL
