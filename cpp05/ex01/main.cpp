@@ -27,7 +27,7 @@ int main(void)
 
     COUT << ENDL;
     INFO(SIGN_FORM,p);
-    Form f1;
+    Form f1("42form", 35, 10);
     p.signForm(f1);
     COUT << f1 << ENDL;
 

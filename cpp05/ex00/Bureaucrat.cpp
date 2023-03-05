@@ -157,8 +157,15 @@ int   Bureaucrat::getMinGrade(void)
 
 
 
+char const *Bureaucrat::GradeTooHighException::what() const throw()
+{
+    return ("Error! Grade is too high");
+}
 
-
+char const *Bureaucrat::GradeTooLowException::what() const throw()
+{
+    return ("Error! Grade is too low");
+}
 
 std::ostream    &operator<<(std::ostream &o, Bureaucrat const &b)
 {

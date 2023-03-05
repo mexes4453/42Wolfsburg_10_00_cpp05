@@ -6,7 +6,7 @@
 /*   By: cudoh <cudoh@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:26:58 by cudoh             #+#    #+#             */
-/*   Updated: 2023/03/04 02:17:16 by cudoh            ###   ########.fr       */
+/*   Updated: 2023/03/05 05:15:32 by cudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,14 +103,23 @@ void    Form::beSigned(Bureaucrat &b)
         }
 }
 
-
-
-
-std::ostream    &operator<<(std::ostream &o, Form const &f)
+char const *Form::GradeTooHighException::what() const throw()
 {
-    o << "FORM NAME:  " << f.getName() << ENDL
-      << "SIGN GRADE: " << f.getSignGrade() << ENDL
-      << "EXEC GRADE: " << f.getExecGrade() << ENDL
-      << "SIGN STATE: " << f.getSignState() << ENDL;
-    return (o);
+        return ("Error! Grade is too high");
+}
+
+char const *Form::GradeTooLowException::what() const throw()
+{
+        return ("Error! Grade is too low");
+}
+
+
+
+std::ostream &operator<<(std::ostream &o, Form const &f)
+{
+        o << "FORM NAME:  " << f.getName() << ENDL
+          << "SIGN GRADE: " << f.getSignGrade() << ENDL
+          << "EXEC GRADE: " << f.getExecGrade() << ENDL
+          << "SIGN STATE: " << f.getSignState() << ENDL;
+        return (o);
 }

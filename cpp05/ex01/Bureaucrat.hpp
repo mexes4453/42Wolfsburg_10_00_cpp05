@@ -6,7 +6,7 @@
 /*   By: cudoh <cudoh@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:26:26 by cudoh             #+#    #+#             */
-/*   Updated: 2023/02/26 11:21:53 by cudoh            ###   ########.fr       */
+/*   Updated: 2023/03/05 05:12:37 by cudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,13 @@ class Bureaucrat
         class GradeTooHighException : public std::exception
         {
             public:
-                virtual char const *what() const throw()
-                {
-                    return ("Error! Grade is too high");
-                }
+                virtual char const *what() const throw();
         };
         
         class GradeTooLowException : public std::exception
         {
             public:
-                virtual char const *what() const throw()
-                {
-                    return ("Error! Grade is too low");
-                }
+                virtual char const *what() const throw();
 
         };
 };

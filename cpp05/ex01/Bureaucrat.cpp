@@ -160,6 +160,15 @@ int   Bureaucrat::getMinGrade(void)
 }
 
 
+char const *Bureaucrat::GradeTooHighException::what() const throw()
+{
+    return ("Error! Grade is too high");
+}
+
+char const *Bureaucrat::GradeTooLowException::what() const throw()
+{
+    return ("Error! Grade is too low");
+}
 
 void Bureaucrat::signForm(Form &f)
 {
@@ -174,23 +183,14 @@ void Bureaucrat::signForm(Form &f)
     catch( Form::GradeTooLowException& e)
     {
         BUREAUCRAT_EXCEPTION_MSG(f,e);
-        //CERR << this->_name << " couldn't signed " 
-        //     << f.getName() << " because " 
-        //     << e.what() << ENDL;
     }
     catch ( Form::GradeTooHighException &e)
     {
         BUREAUCRAT_EXCEPTION_MSG(f,e);
-     //   CERR << this->_name << " couldn't signed " 
-     //        << f.getName() << " because " 
-     //        << e.what() << ENDL;
     }
     catch ( std::exception &e)
     {
         BUREAUCRAT_EXCEPTION_MSG(f,e);
-     //   CERR << this->_name << " couldn't signed " 
-     //        << f.getName() << " because " 
-     //        << e.what() << ENDL;
         
     }
 }

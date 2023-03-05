@@ -121,7 +121,19 @@ bool AForm::checkFormExecGrade(Bureaucrat const &b) const
     return (boReturn);
 }
 
-std::ostream    &operator<<(std::ostream &o, AForm const &f)
+char const *AForm::GradeTooHighException::what() const throw()
+{
+    return ("Error! Grade is too high");
+}
+
+char const *AForm::GradeTooLowException::what() const throw()
+{
+    return ("Error! Grade is too low");
+}
+
+
+
+std::ostream &operator<<(std::ostream &o, AForm const &f)
 {
     o << "FORM NAME:  " << f.getName() << ENDL
       << "SIGN GRADE: " << f.getSignGrade() << ENDL
