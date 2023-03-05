@@ -37,7 +37,7 @@ class PresidentialPardonForm : public AForm
         PresidentialPardonForm(std::string const target);
         PresidentialPardonForm(PresidentialPardonForm const &other);
         PresidentialPardonForm  &operator=(PresidentialPardonForm const &other);
-        ~PresidentialPardonForm(void);
+        virtual ~PresidentialPardonForm(void);
         
         void execute(Bureaucrat const &b) const;
         /*------------ EXCEPTION ----------------------*/

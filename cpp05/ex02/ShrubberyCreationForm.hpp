@@ -6,7 +6,7 @@
 /*   By: cudoh <cudoh@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:26:26 by cudoh             #+#    #+#             */
-/*   Updated: 2023/03/04 01:23:19 by cudoh            ###   ########.fr       */
+/*   Updated: 2023/03/05 11:33:25 by cudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class ShrubberyCreationForm : public AForm
         ShrubberyCreationForm(std::string const target);
         ShrubberyCreationForm(ShrubberyCreationForm const &other);
         ShrubberyCreationForm  &operator=(ShrubberyCreationForm const &other);
-        ~ShrubberyCreationForm(void);
+        virtual ~ShrubberyCreationForm(void);
         
         void execute(Bureaucrat const &b) const;
         /*------------ EXCEPTION ----------------------*/

@@ -6,7 +6,7 @@
 /*   By: cudoh <cudoh@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:26:26 by cudoh             #+#    #+#             */
-/*   Updated: 2023/03/04 01:23:06 by cudoh            ###   ########.fr       */
+/*   Updated: 2023/03/05 11:33:13 by cudoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ class RobotomyRequestForm : public AForm
         RobotomyRequestForm(std::string const target);
         RobotomyRequestForm(RobotomyRequestForm const &other);
         RobotomyRequestForm  &operator=(RobotomyRequestForm const &other);
-        ~RobotomyRequestForm(void);
+        virtual ~RobotomyRequestForm(void);
         
         void execute(Bureaucrat const &b) const;
         /*------------ EXCEPTION ----------------------*/
